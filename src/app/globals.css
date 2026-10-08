@@ -3,6 +3,9 @@
 
 @theme {
   --font-anek: "Anek Bangla", sans-serif;
+  --color-pr: #05893e;
+  --color-pr-content: #eee;
+  --color-pr-hover: #0a6c2e;
 }
 
 @layer components {
