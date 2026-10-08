@@ -9,6 +9,7 @@ async function NavLinks() {
     console.log("Something went wrong!");
     return;
   }
+
   const data = (await res.json()) as category[];
 
   return (

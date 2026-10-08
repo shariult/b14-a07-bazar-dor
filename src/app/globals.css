@@ -6,6 +6,25 @@
   --color-pr: #05893e;
   --color-pr-content: #eee;
   --color-pr-hover: #0a6c2e;
+
+  --animate-marquee: marquee 15s linear infinite;
+  --animate-marquee2: marquee2 15s linear infinite;
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes marquee2 {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
 }
 
 @layer components {
