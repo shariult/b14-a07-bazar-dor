@@ -10,6 +10,28 @@ function getCurrentDateBn() {
   return formattedDate;
 }
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = function (ms: number) {
+  const dummyPromise = new Promise(function (resolve) {
+    setTimeout(resolve, ms);
+  });
+  return dummyPromise;
+};
 
-export { getCurrentDateBn, delay };
+const toBanglaNum = (num: number | string) => {
+  const toNum = Number(num);
+  const bnNumber = new Intl.NumberFormat("bn-BD");
+  return bnNumber.format(toNum);
+};
+
+const formatUnit = (unit: string) => {
+  const units: Record<string, string> = {
+    kg: "কেজি",
+    litre: "লিটার",
+    dozen: "ডজন",
+    piece: "টি",
+    gm: "গ্রাম",
+  };
+  return units[unit.toLowerCase()] || unit;
+};
+
+export { getCurrentDateBn, delay, toBanglaNum, formatUnit };

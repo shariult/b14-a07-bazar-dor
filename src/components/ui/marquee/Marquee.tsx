@@ -1,14 +1,19 @@
-import React from "react";
+import React, { Suspense } from "react";
 import MarqueeItems from "./MarqueeItems";
+import MarqueeItemsSk from "./MarqueeItemsSk";
 
 function Marquee() {
   return (
-    <div className="relative flex overflow-hidden">
-      <div className="animate-marquee whitespace-nowrap">
-        <MarqueeItems />
+    <div className="relative flex overflow-hidden border-b border-b-gray-100">
+      <div className="flex animate-marquee whitespace-nowrap">
+        <Suspense fallback={<MarqueeItemsSk />}>
+          <MarqueeItems />
+        </Suspense>
       </div>
-      <div className="absolute top-0 animate-marquee2 whitespace-nowrap">
-        <MarqueeItems />
+      <div className="flex absolute top-0 animate-marquee2 whitespace-nowrap">
+        <Suspense fallback={<MarqueeItemsSk />}>
+          <MarqueeItems />
+        </Suspense>
       </div>
     </div>
   );

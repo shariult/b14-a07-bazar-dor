@@ -7,8 +7,8 @@
   --color-pr-content: #eee;
   --color-pr-hover: #0a6c2e;
 
-  --animate-marquee: marquee 15s linear infinite;
-  --animate-marquee2: marquee2 15s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee2: marquee2 60s linear infinite;
   @keyframes marquee {
     0% {
       transform: translateX(0%);

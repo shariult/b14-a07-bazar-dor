@@ -5,7 +5,7 @@ type category = {
   icon: string;
 };
 
-type PriceDirection = "up" | "down";
+type PriceDirection = "up" | "down" | "flat";
 
 type PriceChange = {
   dir: PriceDirection;
