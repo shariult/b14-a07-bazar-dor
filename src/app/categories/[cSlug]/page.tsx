@@ -1,14 +1,15 @@
 import React from "react";
+import Container from "@/components/ui/Container";
 
 type CategoryShowProps = {
   params: Promise<{
-    cId: string;
+    cSlug: string;
   }>;
 };
 
 async function CategoryShow({ params }: CategoryShowProps) {
-  const { cId } = await params;
-  return <div>{cId}</div>;
+  const { cSlug } = await params;
+  return <Container el={"header"}>{cSlug}</Container>;
 }
 
 export default CategoryShow;

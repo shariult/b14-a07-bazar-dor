@@ -3,6 +3,7 @@ import { Anek_Bangla } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/navbar/Navbar";
 import Marquee from "@/components/ui/marquee/Marquee";
+import Footer from "@/components/layout/Footer";
 
 const anekBangla = Anek_Bangla({
   subsets: ["latin"],
@@ -15,11 +16,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="bn" className={`${anekBangla}`} data-theme="light">
+    <html lang="bn" className={`${anekBangla} bg-gray-100`} data-theme="light">
       <body>
         <Navbar />
         <Marquee />
-        <main>{children}</main>
+        <main className="min-h-[60vh]">{children}</main>
+        <Footer />
       </body>
     </html>
   );

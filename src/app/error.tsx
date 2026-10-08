@@ -13,11 +13,11 @@ function ErrorPage({ error, reset }: ErrorPageProps) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h2>Something went wrong!</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen p-10">
+      <h2 className="text-4xl mb-4">Something went wrong!</h2>
       <button
         onClick={() => reset()}
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        className="btn bg-red-500 hover:bg-red-700 text-gray-50 rounded-lg"
       >
         Try again
       </button>

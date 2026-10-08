@@ -19,7 +19,7 @@ function Container<C extends ElementType>(props: ContainerProps<C>) {
   return (
     <El className={`${classes}`} {...rest}>
       <div
-        className={`container mx-auto py-20 ${boxClassName ? boxClassName : ""}`}
+        className={`container mx-auto px-6 py-20 ${boxClassName ? boxClassName : ""}`}
       >
         {children}
       </div>

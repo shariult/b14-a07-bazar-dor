@@ -4,7 +4,7 @@ import MarqueeItemsSk from "./MarqueeItemsSk";
 
 function Marquee() {
   return (
-    <div className="relative flex overflow-hidden border-b border-b-gray-100">
+    <div className="relative flex overflow-hidden bg-white border-b border-b-gray-100">
       <div className="flex animate-marquee whitespace-nowrap">
         <Suspense fallback={<MarqueeItemsSk />}>
           <MarqueeItems />
