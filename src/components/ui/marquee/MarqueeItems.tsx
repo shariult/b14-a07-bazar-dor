@@ -29,7 +29,7 @@ async function MarqueeItems() {
             </span>
 
             <span
-              className={`${item.change.dir === "up" ? "text-green-700" : item.change.dir === "down" ? "text-red-700" : "text-gray-700"}`}
+              className={`${item.change.dir === "up" ? "text-red-700" : item.change.dir === "down" ? " text-green-700" : "text-gray-700"}`}
             >
               {item.change.dir === "up" && "▲"}
               {item.change.dir === "down" && "▼"}

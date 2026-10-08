@@ -28,6 +28,15 @@
 }
 
 @layer components {
+  .heading-1 {
+    @apply font-bold text-5xl/12;
+  }
+  .heading-2 {
+    @apply font-bold text-3xl/12;
+  }
+  .heading-3 {
+    @apply font-bold text-xl/8;
+  }
 }
 @layer utilities {
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { getCurrentDateBn } from "@/lib/utils";
-import Link from "next/link";
 
 function Hero() {
   return (
@@ -14,7 +14,7 @@ function Hero() {
         <span className="inline-block mb-2 py-2 px-4 bg-green-100 text-green-500 text-lg font-medium rounded-full">
           {getCurrentDateBn()}
         </span>
-        <h1 className="font-bold text-5xl mb-4">আজকের বাজারের দাম এক নজরে</h1>
+        <h1 className="heading-1 mb-4">আজকের বাজারের দাম এক নজরে</h1>
         <p className="max-w-[60ch] mb-6 text-lg text-gray-700">
           চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক
           বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
