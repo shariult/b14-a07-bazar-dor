@@ -27,7 +27,7 @@ async function Sections() {
           {increasedPrice.map((item) => {
             return (
               <ProductCard
-                href={`/products/${item.slug}`}
+                href={`/product/${item.slug}`}
                 key={item.id}
                 productData={item}
               />
@@ -45,7 +45,7 @@ async function Sections() {
           {decreasedPrice.map((item) => {
             return (
               <ProductCard
-                href={`/products/${item.slug}`}
+                href={`/product/${item.slug}`}
                 key={item.id}
                 productData={item}
               />
@@ -66,7 +66,7 @@ async function Sections() {
           {data.map((item) => {
             return (
               <ProductCard
-                href={`/products/${item.slug}`}
+                href={`/product/${item.slug}`}
                 key={item.id}
                 productData={item}
               />

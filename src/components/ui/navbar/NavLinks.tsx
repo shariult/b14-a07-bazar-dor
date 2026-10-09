@@ -17,7 +17,7 @@ async function NavLinks() {
       {data.map((item) => (
         <li key={item.id}>
           <Link
-            href={`/categories/${item.slug}`}
+            href={`/category/${item.slug}`}
             className="flex gap-2 py-2 px-4 md:justify-center hover:bg-gray-100 md:rounded-lg"
           >
             <span>{item.icon}</span>
