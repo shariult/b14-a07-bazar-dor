@@ -8,6 +8,18 @@ async function getProductIndex() {
   return data;
 }
 
+async function getProductsByCategory(category: string) {
+  const res = await fetch(
+    `${process.env.API_URL}/products?category=${category}`,
+  );
+  if (!res.ok) {
+    console.log("Something went wrong!");
+    return;
+  }
+  const data = res.json();
+  return data;
+}
+
 async function getProductShow(pId: string) {
   const res = await fetch(`${process.env.API_URL}/products/${pId}`);
   if (!res.ok) {
@@ -18,4 +30,4 @@ async function getProductShow(pId: string) {
   return data;
 }
 
-export { getProductIndex, getProductShow };
+export { getProductIndex, getProductShow, getProductsByCategory };

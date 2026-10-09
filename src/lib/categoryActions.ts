@@ -10,8 +10,10 @@ async function getCategoryIndex() {
   return data;
 }
 
-async function getCategoryShow(cId: string) {
-  const res = await fetch(`${process.env.API_URL as string}/categories/${cId}`);
+async function getCategoryShow(cSlug: string) {
+  const res = await fetch(
+    `${process.env.API_URL as string}/categories/${cSlug}`,
+  );
 
   if (!res.ok) {
     console.log("Something went wrong!");

@@ -1,4 +1,4 @@
-import { toBanglaNum } from "@/lib/utils";
+import { formatUnit, toBanglaNum } from "@/lib/utils";
 import { Product } from "@/types";
 import React, { ComponentPropsWithoutRef } from "react";
 
@@ -62,7 +62,9 @@ function ProductShowSummary(props: ProductShowSummaryProps) {
             </span>
             <span className="text-xl">টাকা</span>
           </p>
-          <p className="text-sm text-gray-500">প্রতি কেজি-এর হিসাবে</p>
+          <p className="text-sm text-gray-500">
+            প্রতি {formatUnit(productData.unit)}-এর হিসাবে
+          </p>
         </div>
       </div>
     </>

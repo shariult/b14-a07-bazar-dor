@@ -1,5 +1,9 @@
 import React from "react";
-import Container from "@/components/ui/Container";
+import CategoryShowHero from "@/components/layout/category/CategoryShowHero";
+import { getProductsByCategory } from "@/lib/productActions";
+import { getCategoryShow } from "@/lib/categoryActions";
+import { Category, Product } from "@/types";
+import CategoryShowProducts from "@/components/layout/category/CategoryShowProducts";
 
 type CategoryShowProps = {
   params: Promise<{
@@ -9,7 +13,16 @@ type CategoryShowProps = {
 
 async function CategoryShow({ params }: CategoryShowProps) {
   const { cSlug } = await params;
-  return <Container el={"header"}>{cSlug}</Container>;
+  const cData = (await getCategoryShow(cSlug)) as Category;
+  const data = (await getProductsByCategory(cSlug)) as Product[];
+
+  return (
+    <div className="flex flex-col gap-4 py-12">
+      <CategoryShowHero categoryData={cData} numOfProducts={data.length} />
+
+      <CategoryShowProducts productData={data} />
+    </div>
+  );
 }
 
 export default CategoryShow;

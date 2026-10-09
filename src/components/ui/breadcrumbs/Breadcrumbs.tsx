@@ -18,7 +18,7 @@ function Breadcrumbs(props: BreadcrumbsProps) {
     >
       <ul>
         <li>
-          <Link href="/">Home</Link>
+          <Link href="/">হোম</Link>
         </li>
         <li>
           <Link href={`/category/${product.category}`}>
