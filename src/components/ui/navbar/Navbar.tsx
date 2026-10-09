@@ -15,10 +15,10 @@ function Navbar(props: NavbarProps) {
 
   return (
     <nav
-      className={`bg-base-100 border-b border-gray-100 ${className ? className : ""}`}
+      className={`bg-base-100 border-b border-gray-100 sticky top-0 z-10 ${className ? className : ""}`}
       {...rest}
     >
-      <div className="navbar container mx-auto ">
+      <div className="navbar container mx-auto">
         <Suspense>
           <MobileMenu />
         </Suspense>
