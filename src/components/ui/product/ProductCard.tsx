@@ -2,6 +2,7 @@ import React from "react";
 import Link, { LinkProps } from "next/link";
 import { Product } from "@/types";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
+import PriceChangeIndicator from "../PriceChangeIndicator";
 
 type ProductCardProps = {
   productData: Product;
@@ -43,14 +44,10 @@ function ProductCard(props: ProductCardProps) {
           </span>
         </div>
 
-        <p
-          className={`${productData.change.dir === "up" ? "text-red-500" : productData.change.dir === "down" ? "text-green-500" : "text-gray-700"} px-4 py-1 rounded-full bg-gray-100`}
-        >
-          {productData.change.dir === "up" && <>▲</>}
-          {productData.change.dir === "down" && <>▼</>}
-          {productData.change.dir === "flat" && <>&mdash;</>}
-          &nbsp;{toBanglaNum(productData.change.pct)} %
-        </p>
+        <PriceChangeIndicator
+          change={productData.change}
+          className="bg-gray-100 px-4 py-1"
+        />
       </div>
     </Link>
   );

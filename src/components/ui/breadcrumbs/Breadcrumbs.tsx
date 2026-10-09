@@ -1,12 +1,15 @@
 import React, { ComponentPropsWithoutRef } from "react";
+import Link from "next/link";
+import { Product } from "@/types";
 
 type BreadcrumbsProps = {
+  product: Product;
   className?: string;
   children?: React.ReactNode;
 } & ComponentPropsWithoutRef<"div">;
 
 function Breadcrumbs(props: BreadcrumbsProps) {
-  const { className, children, ...rest } = props;
+  const { product, className, children, ...rest } = props;
 
   return (
     <div
@@ -15,12 +18,14 @@ function Breadcrumbs(props: BreadcrumbsProps) {
     >
       <ul>
         <li>
-          <a>Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li>
-          <a>Documents</a>
+          <Link href={`/category/${product.category}`}>
+            {product.categoryNameBn}
+          </Link>
         </li>
-        <li>Add Document</li>
+        <li>{product.nameBn}</li>
       </ul>
     </div>
   );

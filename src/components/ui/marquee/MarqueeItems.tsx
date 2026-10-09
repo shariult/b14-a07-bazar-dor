@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 import { Product } from "@/types";
+import PriceChangeIndicator from "../PriceChangeIndicator";
 
 type MarqueeItemsProps = {
   className?: string;
@@ -36,14 +37,7 @@ async function MarqueeItems(props: MarqueeItemsProps) {
               {toBanglaNum(item.today)} টাকা/{formatUnit(item.unit)}
             </span>
 
-            <span
-              className={`${item.change.dir === "up" ? "text-red-700" : item.change.dir === "down" ? " text-green-700" : "text-gray-700"}`}
-            >
-              {item.change.dir === "up" && <>▲</>}
-              {item.change.dir === "down" && <>▼</>}
-              {item.change.dir === "flat" && <>&mdash;</>}
-              {toBanglaNum(item.change.pct)} %
-            </span>
+            <PriceChangeIndicator change={item.change} />
           </p>
         );
       })}
