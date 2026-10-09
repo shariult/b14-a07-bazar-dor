@@ -1,11 +1,18 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getCurrentDateBn } from "@/lib/utils";
 
-function NavLogo() {
+type NavLogoProps = {
+  className?: string;
+  children?: React.ReactNode;
+} & ComponentPropsWithoutRef<"div">;
+
+function NavLogo(props: NavLogoProps) {
+  const { className, children, ...rest } = props;
+
   return (
-    <div className="flex-1">
+    <div className={`flex-1 ${className ? className : ""}`} {...rest}>
       <Link href="/" className="btn btn-ghost text-xl py-6 px-2">
         <div className="flex gap-2">
           <span className="p-4 rounded-lg bg-pr">

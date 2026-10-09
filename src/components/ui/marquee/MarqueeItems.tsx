@@ -1,8 +1,15 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 import { Product } from "@/types";
 
-async function MarqueeItems() {
+type MarqueeItemsProps = {
+  className?: string;
+  children?: React.ReactNode;
+} & ComponentPropsWithoutRef<"p">;
+
+async function MarqueeItems(props: MarqueeItemsProps) {
+  const { className, children, ...rest } = props;
+
   const res = await fetch(`${process.env.API_URL}/products`);
   if (!res.ok) {
     console.log("Something went wrong!");
@@ -16,8 +23,9 @@ async function MarqueeItems() {
       {data.slice(0, 10).map((item) => {
         return (
           <p
-            className="flex gap-3 px-4 py-2 border-x border-x-gray-100"
             key={item.id}
+            className={`flex gap-3 px-4 py-2 border-x border-x-gray-100 ${className ? className : ""}`}
+            {...rest}
           >
             <span>
               <span className="inline-block mr-1">{item.image}</span>

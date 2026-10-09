@@ -27,7 +27,7 @@ async function HomeSections() {
           {increasedPrice.map((item) => {
             return (
               <ProductCard
-                href={`/product/${item.slug}`}
+                href={`/product/${item.id}-${item.slug}`}
                 key={item.id}
                 productData={item}
               />
@@ -45,7 +45,7 @@ async function HomeSections() {
           {decreasedPrice.map((item) => {
             return (
               <ProductCard
-                href={`/product/${item.slug}`}
+                href={`/product/${item.id}-${item.slug}`}
                 key={item.id}
                 productData={item}
               />
@@ -66,7 +66,7 @@ async function HomeSections() {
           {data.map((item) => {
             return (
               <ProductCard
-                href={`/product/${item.slug}`}
+                href={`/product/${item.id}-${item.slug}`}
                 key={item.id}
                 productData={item}
               />

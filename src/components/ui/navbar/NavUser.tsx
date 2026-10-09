@@ -1,10 +1,17 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function NavUser() {
+type NavUserProps = {
+  className?: string;
+  children?: React.ReactNode;
+} & ComponentPropsWithoutRef<"div">;
+
+function NavUser(props: NavUserProps) {
+  const { className, children, ...rest } = props;
+
   return (
-    <div className="flex gap-2">
+    <div className={`flex gap-2 ${className ? className : ""}`} {...rest}>
       <div className="dropdown dropdown-end">
         <div tabIndex={0} role="button" className="btn btn-ghost avatar">
           <div className="w-10 rounded-full">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { getCurrentDateBn } from "@/lib/utils";
 import bazarHeroImg from "@/assets/img/bazar-hero.png";
+
 function Hero() {
   return (
     <Container

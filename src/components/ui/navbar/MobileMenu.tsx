@@ -1,9 +1,16 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import NavLinks from "./NavLinks";
 
-function MobileMenu() {
+type MobileMenuProps = {
+  className?: string;
+  children?: React.ReactNode;
+} & ComponentPropsWithoutRef<"div">;
+
+function MobileMenu(props: MobileMenuProps) {
+  const { className, children, ...rest } = props;
+
   return (
-    <div className="dropdown">
+    <div className={`dropdown ${className ? className : ""}`} {...rest}>
       <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
         <svg
           aria-label="Menu"

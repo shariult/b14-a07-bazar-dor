@@ -1,10 +1,20 @@
-import React, { Suspense } from "react";
+import React, { ComponentPropsWithoutRef, Suspense } from "react";
 import MarqueeItems from "./MarqueeItems";
 import MarqueeItemsSk from "./MarqueeItemsSk";
 
-function Marquee() {
+type MarqueeProps = {
+  className?: string;
+  children?: React.ReactNode;
+} & ComponentPropsWithoutRef<"div">;
+
+function Marquee(props: MarqueeProps) {
+  const { className, children, ...rest } = props;
+
   return (
-    <div className="relative flex overflow-hidden bg-white border-b border-b-gray-100">
+    <div
+      className={`relative flex overflow-hidden bg-white border-b border-b-gray-100 ${className ? className : ""}`}
+      {...rest}
+    >
       <div className="flex animate-marquee whitespace-nowrap">
         <Suspense fallback={<MarqueeItemsSk />}>
           <MarqueeItems />
