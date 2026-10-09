@@ -10,12 +10,12 @@ function LoadingPage(props: LoadingPageProps) {
 
   return (
     <div
-      className={`w-full py-20 flex flex-col items-center justify-center bg-gray-900 text-gray-200 ${className}`}
+      className={`w-full py-20 flex flex-col items-center justify-center text-gray-200 ${className}`}
       {...rest}
     >
-      <div className="h-8 w-8 rounded-full border-2 border-gray-800 border-t-gray-200 animate-spin"></div>
+      <div className="h-8 w-8 rounded-full border-2 border-gray-200 border-t-gray-700 dark:border-gray-800 dark:border-t-gray-200 animate-spin"></div>
 
-      <p className="mt-3 text-sm font-medium text-gray-500 dark:text-gray-400">
+      <p className="mt-3 text-sm font-medium text-gray-700 dark:text-gray-200">
         {loadingText ?? "Loading..."}
       </p>
     </div>

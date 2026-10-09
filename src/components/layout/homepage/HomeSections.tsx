@@ -3,9 +3,9 @@ import Container from "@/components/ui/Container";
 import { Product } from "@/types";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 import Link from "next/link";
-import ProductCard from "@/components/ui/products/ProductCard";
+import ProductCard from "@/components/ui/product/ProductCard";
 
-async function Sections() {
+async function HomeSections() {
   const res = await fetch(`${process.env.API_URL}/products`);
   if (!res.ok) {
     console.log("Something went wrong!");
@@ -54,7 +54,7 @@ async function Sections() {
         </div>
       </Container>
 
-      <Container>
+      <Container id="সব-পণ্য">
         <h2 className="heading-2 flex flex-col gap-2 mb-8">
           সব পণ্য
           <span className="block text-base font-normal text-gray-500">
@@ -78,4 +78,4 @@ async function Sections() {
   );
 }
 
-export default Sections;
+export default HomeSections;

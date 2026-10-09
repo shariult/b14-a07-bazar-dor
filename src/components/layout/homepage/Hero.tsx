@@ -20,7 +20,7 @@ function Hero() {
           বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
         </p>
         <Link
-          href={"/product"}
+          href={"#সব-পণ্য"}
           className="btn btn-lg bg-pr hover:bg-pr-hover text-pr-content rounded-lg"
         >
           সব পণ্য দেখুন

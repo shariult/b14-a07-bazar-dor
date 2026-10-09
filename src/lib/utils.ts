@@ -28,7 +28,7 @@ const formatUnit = (unit: string) => {
     kg: "কেজি",
     litre: "লিটার",
     dozen: "ডজন",
-    piece: "টি",
+    piece: "পিস",
     gm: "গ্রাম",
   };
   return units[unit.toLowerCase()] || unit;

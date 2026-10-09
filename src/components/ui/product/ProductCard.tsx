@@ -26,13 +26,15 @@ function ProductCard(props: ProductCardProps) {
 
         <div>
           <h3 className="heading-3">{productData.nameBn}</h3>
-          <span>প্রতি {formatUnit(productData.unit)}</span>
+          <span className="text-gray-500">
+            প্রতি {formatUnit(productData.unit)}
+          </span>
         </div>
       </div>
 
       <div className="flex justify-between items-end">
         <div className="flex flex-col">
-          <span>আজকের দাম</span>
+          <span className="text-sm text-gray-500">আজকের দাম</span>
           <span className="flex gap-2 items-end">
             <span className="text-3xl font-bold">
               {toBanglaNum(productData.today)}
@@ -44,8 +46,9 @@ function ProductCard(props: ProductCardProps) {
         <p
           className={`${productData.change.dir === "up" ? "text-red-500" : productData.change.dir === "down" ? "text-green-500" : "text-gray-700"} px-4 py-1 rounded-full bg-gray-100`}
         >
-          {productData.change.dir === "up" && "▲"}
-          {productData.change.dir === "down" && "▼"}
+          {productData.change.dir === "up" && <>▲</>}
+          {productData.change.dir === "down" && <>▼</>}
+          {productData.change.dir === "flat" && <>&mdash;</>}
           &nbsp;{toBanglaNum(productData.change.pct)} %
         </p>
       </div>

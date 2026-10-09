@@ -31,8 +31,9 @@ async function MarqueeItems() {
             <span
               className={`${item.change.dir === "up" ? "text-red-700" : item.change.dir === "down" ? " text-green-700" : "text-gray-700"}`}
             >
-              {item.change.dir === "up" && "▲"}
-              {item.change.dir === "down" && "▼"}
+              {item.change.dir === "up" && <>▲</>}
+              {item.change.dir === "down" && <>▼</>}
+              {item.change.dir === "flat" && <>&mdash;</>}
               {toBanglaNum(item.change.pct)} %
             </span>
           </p>
