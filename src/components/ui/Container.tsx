@@ -5,10 +5,11 @@ type ContainerProps<T extends ElementType> = {
   el?: T;
   className?: string;
   boxClassName?: string;
+  setYSpace?: string;
 } & ComponentPropsWithoutRef<T>;
 
 function Container<C extends ElementType>(props: ContainerProps<C>) {
-  const { el, children, className, boxClassName, ...rest } = props;
+  const { children, el, className, boxClassName, setYSpace, ...rest } = props;
   const El = el || "section";
 
   let classes = "p-0";
@@ -19,7 +20,7 @@ function Container<C extends ElementType>(props: ContainerProps<C>) {
   return (
     <El className={`${classes}`} {...rest}>
       <div
-        className={`container mx-auto px-6 py-20 ${boxClassName ? boxClassName : ""}`}
+        className={`container mx-auto px-6 ${setYSpace ?? "py-20"} ${boxClassName ? boxClassName : ""}`}
       >
         {children}
       </div>

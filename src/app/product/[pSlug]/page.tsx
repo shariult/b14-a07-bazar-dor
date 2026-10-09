@@ -2,10 +2,9 @@ import React from "react";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/breadcrumbs/Breadcrumbs";
 import { Product } from "@/types";
-import Image from "next/image";
-import PriceChangeIndicator from "@/components/ui/PriceChangeIndicator";
-import { formatUnit, toBanglaNum } from "@/lib/utils";
 import ProductShowHeader from "@/components/layout/product/ProductShowHeader";
+import ProductShowSummary from "@/components/layout/product/ProductShowSummary";
+import ProductShowTable from "@/components/layout/product/ProductShowTable";
 
 type ProductShowProps = {
   params: Promise<{
@@ -26,10 +25,21 @@ async function ProductShow({ params }: ProductShowProps) {
 
   return (
     <>
-      <div className="container mx-auto py-8">
+      <div className="container mx-auto px-6 py-8">
         <Breadcrumbs product={data} />
       </div>
-      <ProductShowHeader productData={data} />
+
+      <ProductShowHeader className="mb-8" productData={data} />
+
+      <Container
+        className="mb-8"
+        boxClassName="bg-gray-50 rounded-xl border border-gray-200"
+        setYSpace="py-8"
+      >
+        <ProductShowSummary productData={data} className="mb-12" />
+
+        <ProductShowTable productData={data} />
+      </Container>
     </>
   );
 }

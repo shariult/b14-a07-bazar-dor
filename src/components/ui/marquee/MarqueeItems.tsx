@@ -23,22 +23,22 @@ async function MarqueeItems(props: MarqueeItemsProps) {
     <>
       {data.slice(0, 10).map((item) => {
         return (
-          <p
+          <div
             key={item.id}
             className={`flex gap-3 px-4 py-2 border-x border-x-gray-100 ${className ? className : ""}`}
             {...rest}
           >
-            <span>
+            <p>
               <span className="inline-block mr-1">{item.image}</span>
               <span className="inline-block font-medium">{item.nameBn}</span>
-            </span>
+            </p>
 
             <span className="inline-block">
               {toBanglaNum(item.today)} টাকা/{formatUnit(item.unit)}
             </span>
 
             <PriceChangeIndicator change={item.change} />
-          </p>
+          </div>
         );
       })}
     </>
