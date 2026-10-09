@@ -4,15 +4,10 @@ import { Product } from "@/types";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 import Link from "next/link";
 import ProductCard from "@/components/ui/product/ProductCard";
+import { getProductIndex } from "@/lib/productActions";
 
 async function HomeSections() {
-  const res = await fetch(`${process.env.API_URL}/products`);
-  if (!res.ok) {
-    console.log("Something went wrong!");
-    return;
-  }
-
-  const data = (await res.json()) as Product[];
+  const data = (await getProductIndex()) as Product[];
   const increasedPrice = data.filter((item) => item.change.dir === "up");
   const decreasedPrice = data.filter((item) => item.change.dir === "down");
 

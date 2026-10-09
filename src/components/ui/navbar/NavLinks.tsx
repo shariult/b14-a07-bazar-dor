@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import { category } from "@/types";
+import { Category } from "@/types";
 import Link from "next/link";
+import { getCategoryIndex } from "@/lib/categoryActions";
 
 type NavLinksProps = {
   className?: string;
@@ -9,16 +10,7 @@ type NavLinksProps = {
 
 async function NavLinks(props: NavLinksProps) {
   const { className, children, ...rest } = props;
-
-  const res = await fetch(`${process.env.API_URL as string}/categories`);
-
-  if (!res.ok) {
-    console.log("Something went wrong!");
-    return;
-  }
-
-  const data = (await res.json()) as category[];
-
+  const data = (await getCategoryIndex()) as Category[];
   return (
     <>
       {data.map((item) => (

@@ -2,6 +2,7 @@ import React, { ComponentPropsWithoutRef } from "react";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 import { Product } from "@/types";
 import PriceChangeIndicator from "../PriceChangeIndicator";
+import { getProductIndex } from "@/lib/productActions";
 
 type MarqueeItemsProps = {
   className?: string;
@@ -10,14 +11,7 @@ type MarqueeItemsProps = {
 
 async function MarqueeItems(props: MarqueeItemsProps) {
   const { className, children, ...rest } = props;
-
-  const res = await fetch(`${process.env.API_URL}/products`);
-  if (!res.ok) {
-    console.log("Something went wrong!");
-    return;
-  }
-
-  const data = (await res.json()) as Product[];
+  const data = (await getProductIndex()) as Product[];
 
   return (
     <>

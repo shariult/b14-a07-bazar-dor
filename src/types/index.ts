@@ -1,4 +1,4 @@
-type category = {
+type Category = {
   id: string;
   slug: string;
   nameBn: string;
@@ -36,4 +36,4 @@ type Product = {
   markets: Market[];
 };
 
-export { type category, type PriceDirection, type PriceChange, type Product };
+export { type Category, type PriceDirection, type PriceChange, type Product };
