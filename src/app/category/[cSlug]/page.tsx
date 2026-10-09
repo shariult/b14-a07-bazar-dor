@@ -1,9 +1,9 @@
 import React from "react";
+import { Category, Product } from "@/types";
 import CategoryShowHero from "@/components/layout/category/CategoryShowHero";
+import CategoryShowProducts from "@/components/layout/category/CategoryShowProducts";
 import { getProductsByCategory } from "@/lib/productActions";
 import { getCategoryShow } from "@/lib/categoryActions";
-import { Category, Product } from "@/types";
-import CategoryShowProducts from "@/components/layout/category/CategoryShowProducts";
 
 type CategoryShowProps = {
   params: Promise<{

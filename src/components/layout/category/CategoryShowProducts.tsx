@@ -1,10 +1,10 @@
 "use client";
 
 import React, { ComponentPropsWithoutRef, useState } from "react";
+import { Product } from "@/types";
 import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/product/ProductCard";
 import { toBanglaNum } from "@/lib/utils";
-import { Product } from "@/types";
 
 type CategoryShowProductsProps = {
   productData: Product[];

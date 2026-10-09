@@ -1,9 +1,8 @@
 import React from "react";
-import Container from "@/components/ui/Container";
 import { Product } from "@/types";
-import { formatUnit, toBanglaNum } from "@/lib/utils";
-import Link from "next/link";
+import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/product/ProductCard";
+import { toBanglaNum } from "@/lib/utils";
 import { getProductIndex } from "@/lib/productActions";
 
 async function HomeSections() {

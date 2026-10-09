@@ -1,6 +1,6 @@
-import { formatUnit, toBanglaNum } from "@/lib/utils";
-import { Product } from "@/types";
 import React, { ComponentPropsWithoutRef } from "react";
+import { Product } from "@/types";
+import { formatUnit, toBanglaNum } from "@/lib/utils";
 
 type ProductShowSummaryProps = {
   productData: Product;

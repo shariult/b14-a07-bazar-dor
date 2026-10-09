@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Anek_Bangla } from "next/font/google";
-import "./globals.css";
 import Navbar from "@/components/ui/navbar/Navbar";
 import Marquee from "@/components/ui/marquee/Marquee";
 import Footer from "@/components/layout/Footer";
+
+import "./globals.css";
 
 const anekBangla = Anek_Bangla({
   subsets: ["latin"],

@@ -1,8 +1,8 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import { formatUnit, toBanglaNum } from "@/lib/utils";
 import { Product } from "@/types";
 import PriceChangeIndicator from "../PriceChangeIndicator";
 import { getProductIndex } from "@/lib/productActions";
+import { formatUnit, toBanglaNum } from "@/lib/utils";
 
 type MarqueeItemsProps = {
   className?: string;

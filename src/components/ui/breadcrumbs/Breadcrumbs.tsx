@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import Link from "next/link";
 import { Product } from "@/types";
+import Link from "next/link";
 
 type BreadcrumbsProps = {
   product: Product;

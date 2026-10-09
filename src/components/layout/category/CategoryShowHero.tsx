@@ -1,7 +1,7 @@
+import React, { ComponentPropsWithoutRef } from "react";
+import { Category } from "@/types";
 import Container from "@/components/ui/Container";
 import { toBanglaNum } from "@/lib/utils";
-import { Category, Product } from "@/types";
-import React, { ComponentPropsWithoutRef } from "react";
 
 type CategoryShowHeroProps = {
   categoryData: Category;

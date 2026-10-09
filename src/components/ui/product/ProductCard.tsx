@@ -1,6 +1,6 @@
 import React from "react";
-import Link, { LinkProps } from "next/link";
 import { Product } from "@/types";
+import Link, { LinkProps } from "next/link";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 import PriceChangeIndicator from "../PriceChangeIndicator";
 
