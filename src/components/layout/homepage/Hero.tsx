@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { getCurrentDateBn } from "@/lib/utils";
-
+import bazarHeroImg from "@/assets/img/bazar-hero.png";
 function Hero() {
   return (
     <Container
@@ -28,10 +28,9 @@ function Hero() {
       </div>
       <div className="flex justify-center md:justify-end">
         <Image
-          src="/bazar-hero.png"
+          src={bazarHeroImg}
           alt="basket full of foods"
           width={316}
-          height={264}
           className="h-auto"
         />
       </div>
