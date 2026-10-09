@@ -5,6 +5,7 @@ import { Product } from "@/types";
 import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/product/ProductCard";
 import { toBanglaNum } from "@/lib/utils";
+import EmptyData from "@/components/ui/EmptyData";
 
 type CategoryShowProductsProps = {
   productData: Product[];
@@ -63,17 +64,20 @@ function CategoryShowProducts(props: CategoryShowProductsProps) {
         </p>
       </Container>
 
-      <Container boxClassName="" setYSpace="py-0" setXSpace="px-0">
+      <Container setYSpace="py-0" setXSpace="px-0">
+        {sortedData.length === 0 && <EmptyData />}
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sortedData.map((item) => {
-            return (
-              <ProductCard
-                href={`/product/${item.id}-${item.slug}`}
-                key={item.id}
-                productData={item}
-              />
-            );
-          })}
+          {sortedData?.length > 0 &&
+            sortedData.map((item) => {
+              return (
+                <ProductCard
+                  href={`/product/${item.id}-${item.slug}`}
+                  key={item.id}
+                  productData={item}
+                />
+              );
+            })}
         </div>
       </Container>
     </>

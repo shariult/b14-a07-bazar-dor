@@ -15,26 +15,29 @@ async function MarqueeItems(props: MarqueeItemsProps) {
 
   return (
     <>
-      {data.slice(0, 10).map((item) => {
-        return (
-          <div
-            key={item.id}
-            className={`flex gap-3 px-4 py-2 border-x border-x-gray-100 ${className ? className : ""}`}
-            {...rest}
-          >
-            <p>
-              <span className="inline-block mr-1">{item.image}</span>
-              <span className="inline-block font-medium">{item.nameBn}</span>
-            </p>
+      {data?.length === 0 && <p>কোন তথ্য পাওয়া যায় নি!</p>}
 
-            <span className="inline-block">
-              {toBanglaNum(item.today)} টাকা/{formatUnit(item.unit)}
-            </span>
+      {data?.length > 0 &&
+        data.slice(0, 10).map((item) => {
+          return (
+            <div
+              key={item.id}
+              className={`flex gap-3 px-4 py-2 border-x border-x-gray-100 ${className ? className : ""}`}
+              {...rest}
+            >
+              <p>
+                <span className="inline-block mr-1">{item.image}</span>
+                <span className="inline-block font-medium">{item.nameBn}</span>
+              </p>
 
-            <PriceChangeIndicator change={item.change} />
-          </div>
-        );
-      })}
+              <span className="inline-block">
+                {toBanglaNum(item.today)} টাকা/{formatUnit(item.unit)}
+              </span>
+
+              <PriceChangeIndicator change={item.change} />
+            </div>
+          );
+        })}
     </>
   );
 }

@@ -3,7 +3,7 @@ async function getCategoryIndex() {
 
   if (!res.ok) {
     console.log("Something went wrong!");
-    return;
+    return [];
   }
 
   const data = await res.json();
@@ -17,7 +17,7 @@ async function getCategoryShow(cSlug: string) {
 
   if (!res.ok) {
     console.log("Something went wrong!");
-    return;
+    return [];
   }
 
   const data = await res.json();

@@ -4,11 +4,14 @@ import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/product/ProductCard";
 import { toBanglaNum } from "@/lib/utils";
 import { getProductIndex } from "@/lib/productActions";
+import EmptyData from "@/components/ui/EmptyData";
 
 async function HomeSections() {
   const data = (await getProductIndex()) as Product[];
-  const increasedPrice = data.filter((item) => item.change.dir === "up");
-  const decreasedPrice = data.filter((item) => item.change.dir === "down");
+  const increasedPrice =
+    data && data.filter((item) => item.change.dir === "up");
+  const decreasedPrice =
+    data && data.filter((item) => item.change.dir === "down");
 
   return (
     <>
@@ -17,16 +20,18 @@ async function HomeSections() {
           <span className="text-red-700">▲</span> আজ দাম বেড়েছে
         </h2>
 
+        {increasedPrice.length === 0 && <EmptyData />}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {increasedPrice.map((item) => {
-            return (
-              <ProductCard
-                href={`/product/${item.id}-${item.slug}`}
-                key={item.id}
-                productData={item}
-              />
-            );
-          })}
+          {increasedPrice?.length > 0 &&
+            increasedPrice.map((item) => {
+              return (
+                <ProductCard
+                  href={`/product/${item.id}-${item.slug}`}
+                  key={item.id}
+                  productData={item}
+                />
+              );
+            })}
         </div>
       </Container>
 
@@ -35,16 +40,19 @@ async function HomeSections() {
           <span className="text-green-700">▼</span> আজ দাম কমেছে
         </h2>
 
+        {decreasedPrice.length === 0 && <EmptyData />}
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {decreasedPrice.map((item) => {
-            return (
-              <ProductCard
-                href={`/product/${item.id}-${item.slug}`}
-                key={item.id}
-                productData={item}
-              />
-            );
-          })}
+          {decreasedPrice?.length > 0 &&
+            decreasedPrice.map((item) => {
+              return (
+                <ProductCard
+                  href={`/product/${item.id}-${item.slug}`}
+                  key={item.id}
+                  productData={item}
+                />
+              );
+            })}
         </div>
       </Container>
 
@@ -56,16 +64,19 @@ async function HomeSections() {
           </span>
         </h2>
 
+        {data.length === 0 && <EmptyData />}
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {data.map((item) => {
-            return (
-              <ProductCard
-                href={`/product/${item.id}-${item.slug}`}
-                key={item.id}
-                productData={item}
-              />
-            );
-          })}
+          {data?.length > 0 &&
+            data.map((item) => {
+              return (
+                <ProductCard
+                  href={`/product/${item.id}-${item.slug}`}
+                  key={item.id}
+                  productData={item}
+                />
+              );
+            })}
         </div>
       </Container>
     </>

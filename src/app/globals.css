@@ -39,6 +39,9 @@
   }
 }
 @layer utilities {
+  .btn-social-size {
+    width: calc(50% - 8px);
+  }
 }
 
 body {

@@ -31,20 +31,21 @@ function ProductShowTable(props: ProductShowTableProps) {
             </tr>
           </thead>
           <tbody>
-            {productData.markets.map((item) => {
-              let avg = Math.floor((item.min + item.max) / 2);
-              return (
-                <tr key={item.market}>
-                  <td className="font-semibold">{item.market}</td>
-                  <td>{item.division}</td>
-                  <td>{toBanglaNum(item.min)} টাকা</td>
-                  <td>{toBanglaNum(item.max)} টাকা</td>
-                  <td>
-                    <strong>{toBanglaNum(avg)} টাকা</strong>
-                  </td>
-                </tr>
-              );
-            })}
+            {productData &&
+              productData.markets.map((item) => {
+                let avg = Math.floor((item.min + item.max) / 2);
+                return (
+                  <tr key={item.market}>
+                    <td className="font-semibold">{item.market}</td>
+                    <td>{item.division}</td>
+                    <td>{toBanglaNum(item.min)} টাকা</td>
+                    <td>{toBanglaNum(item.max)} টাকা</td>
+                    <td>
+                      <strong>{toBanglaNum(avg)} টাকা</strong>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

@@ -4,14 +4,18 @@ import MobileMenu from "./MobileMenu";
 import NavUser from "./NavUser";
 import NavLinks from "./NavLinks";
 import NavLinksSk from "./NavLinksSk";
+import { getCurrentUser } from "@/lib/userActions";
+import NavNoUser from "./NavNoUser";
 
 type NavbarProps = {
   className?: string;
   children?: React.ReactNode;
 } & ComponentPropsWithoutRef<"nav">;
 
-function Navbar(props: NavbarProps) {
+async function Navbar(props: NavbarProps) {
   const { className, children, ...rest } = props;
+
+  const session = await getCurrentUser();
 
   return (
     <nav
@@ -24,7 +28,7 @@ function Navbar(props: NavbarProps) {
         </Suspense>
 
         <NavLogo />
-        <NavUser />
+        {!session ? <NavNoUser /> : <NavUser />}
       </div>
 
       <div className="hidden md:block border-t border-gray-100">
