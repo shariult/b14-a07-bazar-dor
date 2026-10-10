@@ -1,7 +1,8 @@
 import React from "react";
-import { Category, Product } from "@/types";
+import { notFound } from "next/navigation";
 import CategoryShowHero from "@/components/layout/category/CategoryShowHero";
 import CategoryShowProducts from "@/components/layout/category/CategoryShowProducts";
+import EmptyData from "@/components/ui/EmptyData";
 import { getProductsByCategory } from "@/lib/productActions";
 import { getCategoryShow } from "@/lib/categoryActions";
 
@@ -13,14 +14,30 @@ type CategoryShowProps = {
 
 async function CategoryShow({ params }: CategoryShowProps) {
   const { cSlug } = await params;
-  const cData = (await getCategoryShow(cSlug)) as Category;
-  const data = (await getProductsByCategory(cSlug)) as Product[];
+  const cResult = await getCategoryShow(cSlug);
+  const pResult = await getProductsByCategory(cSlug);
+
+  if (cResult.isSuccess && pResult.isSuccess && pResult.data.length === 0) {
+    return (
+      <EmptyData
+        className="container mx-auto"
+        message="কোন পণ্য পাওয়া যায় নি!"
+      />
+    );
+  }
+
+  if (!cResult.isSuccess || !pResult.isSuccess) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col gap-4 py-12">
-      <CategoryShowHero categoryData={cData} numOfProducts={data.length} />
+      <CategoryShowHero
+        categoryData={cResult.data}
+        numOfProducts={pResult.data.length}
+      />
 
-      <CategoryShowProducts productData={data} />
+      <CategoryShowProducts productData={pResult.data} />
     </div>
   );
 }

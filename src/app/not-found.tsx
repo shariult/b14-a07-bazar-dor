@@ -7,12 +7,11 @@ function NotFoundPage() {
       <p className="text-gray-500 mb-6">
         Page Not Found. Could not find requested resource.
       </p>
-
       <Link
         href="/"
         className="btn bg-red-500 hover:bg-red-700 text-gray-50 rounded-lg"
       >
-        Return Home
+        হোম পেজে ফিরে যান
       </Link>
     </div>
   );

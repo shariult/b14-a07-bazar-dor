@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import { Category } from "@/types";
 import Link from "next/link";
 import { getCategoryIndex } from "@/lib/categoryActions";
+import toast from "react-hot-toast";
 
 type NavLinksProps = {
   className?: string;
@@ -10,13 +10,20 @@ type NavLinksProps = {
 
 async function NavLinks(props: NavLinksProps) {
   const { className, children, ...rest } = props;
-  const data = (await getCategoryIndex()) as Category[];
+  const result = await getCategoryIndex();
+
+  if (result.isSuccess && result.data.length === 0) {
+    return <p>ক্যাটেগরি লোড করা যায়নি!</p>;
+  }
+
+  if (!result.isSuccess) {
+    return <p className="text-red-500 py-2">ক্যাটেগরি লোড করা যায়নি!</p>;
+  }
+
   return (
     <>
-      {data?.length === 0 && <p>কোন তথ্য পাওয়া যায় নি!</p>}
-
-      {data?.length > 0 &&
-        data.map((item) => (
+      {result.data?.length > 0 &&
+        result.data.map((item) => (
           <li
             key={item.id}
             className={`${className ? className : ""}`}

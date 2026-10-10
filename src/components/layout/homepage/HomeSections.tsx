@@ -1,17 +1,49 @@
 import React from "react";
-import { Product } from "@/types";
 import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/product/ProductCard";
+import EmptyData from "@/components/ui/EmptyData";
 import { toBanglaNum } from "@/lib/utils";
 import { getProductIndex } from "@/lib/productActions";
-import EmptyData from "@/components/ui/EmptyData";
 
 async function HomeSections() {
-  const data = (await getProductIndex()) as Product[];
-  const increasedPrice =
-    data && data.filter((item) => item.change.dir === "up");
-  const decreasedPrice =
-    data && data.filter((item) => item.change.dir === "down");
+  const result = await getProductIndex();
+
+  if (result.isSuccess && result.data.length === 0) {
+    return (
+      <EmptyData
+        className="container mx-auto mb-10"
+        hideBtn={true}
+        message="কোন পণ্য পাওয়া যায় নি!"
+      />
+    );
+  }
+
+  if (!result.isSuccess) {
+    return (
+      <EmptyData
+        className="container mx-auto mb-10"
+        hideBtn={true}
+        isError={true}
+        message="কিছু একটা সমস্যা হয়েছে!"
+      />
+    );
+  }
+
+  const { data } = result;
+
+  const increasedPrice = data
+    .filter((item) => item.change.dir === "up")
+    .sort((a, b) => {
+      return b.change.pct - a.change.pct;
+    })
+    .slice(0, 6);
+
+  const decreasedPrice = data
+    .filter((item) => item.change.dir === "down")
+    .sort((a, b) => {
+      return a.change.pct - b.change.pct;
+    })
+    .slice(0, 6);
 
   return (
     <>
@@ -20,7 +52,6 @@ async function HomeSections() {
           <span className="text-red-700">▲</span> আজ দাম বেড়েছে
         </h2>
 
-        {increasedPrice.length === 0 && <EmptyData />}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {increasedPrice?.length > 0 &&
             increasedPrice.map((item) => {
@@ -39,8 +70,6 @@ async function HomeSections() {
         <h2 className="heading-2 flex gap-2 mb-8">
           <span className="text-green-700">▼</span> আজ দাম কমেছে
         </h2>
-
-        {decreasedPrice.length === 0 && <EmptyData />}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {decreasedPrice?.length > 0 &&
@@ -64,19 +93,16 @@ async function HomeSections() {
           </span>
         </h2>
 
-        {data.length === 0 && <EmptyData />}
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {data?.length > 0 &&
-            data.map((item) => {
-              return (
-                <ProductCard
-                  href={`/product/${item.id}-${item.slug}`}
-                  key={item.id}
-                  productData={item}
-                />
-              );
-            })}
+          {data.map((item) => {
+            return (
+              <ProductCard
+                href={`/product/${item.id}-${item.slug}`}
+                key={item.id}
+                productData={item}
+              />
+            );
+          })}
         </div>
       </Container>
     </>

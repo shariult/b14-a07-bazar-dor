@@ -2,7 +2,7 @@ import React from "react";
 import { Product } from "@/types";
 import Link, { LinkProps } from "next/link";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
-import PriceChangeIndicator from "../PriceChangeIndicator";
+import PriceChangeIndicator from "./PriceChangeIndicator";
 
 type ProductCardProps = {
   productData: Product;

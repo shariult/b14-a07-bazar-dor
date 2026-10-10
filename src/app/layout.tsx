@@ -5,6 +5,7 @@ import Marquee from "@/components/ui/marquee/Marquee";
 import Footer from "@/components/layout/Footer";
 
 import "./globals.css";
+import ToasterProvider from "@/components/ui/ToasterProvider";
 
 const anekBangla = Anek_Bangla({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Marquee />
         <main className="min-h-[60vh]">{children}</main>
         <Footer />
+        <ToasterProvider />
       </body>
     </html>
   );

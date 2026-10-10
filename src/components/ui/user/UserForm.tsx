@@ -1,8 +1,11 @@
 "use client";
 
+import React, { ComponentPropsWithoutRef, useState } from "react";
+import { authClient } from "@/lib/authClient";
 import { GithubSvg, GoogleSvg } from "@/components/SvgIcons";
 import Link from "next/link";
-import React, { ComponentPropsWithoutRef } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 type UserFormProps = {
   type: "signin" | "signup";
@@ -11,13 +14,68 @@ type UserFormProps = {
 
 function UserForm(props: UserFormProps) {
   const { type, className, ...rest } = props;
+  const [isPassMatch, setIsPassMatch] = useState<boolean>(true);
+  const router = useRouter();
 
-  function userSubmitHandler(e: React.SubmitEvent<HTMLFormElement>) {
+  async function userSubmitHandler(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     const formEl = e.currentTarget;
     const formData = new FormData(formEl);
 
-    console.log(formData.get("email"));
+    if (
+      type === "signup" &&
+      formData.get("password") !== formData.get("password-confirm")
+    ) {
+      setIsPassMatch(false);
+      return;
+    }
+
+    if (type === "signup") {
+      const { data, error } = await authClient.signUp.email({
+        name: formData.get("name") as string,
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+      });
+
+      if (error) {
+        toast.error(error.message ?? "Something went wrong!");
+        return;
+      }
+      formEl.reset();
+      router.push("/");
+      router.refresh();
+      toast.success("Sign Up Successful!");
+    }
+    if (type === "signin") {
+      const { data, error } = await authClient.signIn.email({
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+        rememberMe: true,
+      });
+
+      if (error) {
+        toast.error(error.message ?? "Something went wrong!");
+        return;
+      }
+      formEl.reset();
+      router.push("/");
+      router.refresh();
+      toast.success("Sign In Successful!");
+    }
+  }
+
+  async function socialSignIndHandler(provider: "google" | "github") {
+    const { data, error } = await authClient.signIn.social({
+      provider,
+    });
+
+    if (error) {
+      toast.error(error.message ?? "Something went wrong!");
+      return;
+    }
+    router.push("/");
+    router.refresh();
+    toast.success("Sign Up Successful!");
   }
 
   return (
@@ -62,6 +120,11 @@ function UserForm(props: UserFormProps) {
               minLength={8}
               required
             />
+            {!isPassMatch && (
+              <p className="text-red-500 text-left text-sm">
+                পাসোওয়ার্ড মিলে নাই
+              </p>
+            )}
           </div>
 
           {type === "signup" && (
@@ -69,12 +132,17 @@ function UserForm(props: UserFormProps) {
               <label className="label">পাসওয়ার্ড নিশ্চিত করুন</label>
               <input
                 type="password"
-                name="password"
+                name="password-confirm"
                 className="input w-full"
                 placeholder="আবার লিখুন"
                 minLength={8}
                 required
               />
+              {!isPassMatch && (
+                <p className="text-red-500 text-left text-sm">
+                  পাসোওয়ার্ড মিলে নাই
+                </p>
+              )}
             </div>
           )}
 
@@ -88,13 +156,19 @@ function UserForm(props: UserFormProps) {
 
         <div className="flex justify-between gap-2">
           {/* GitHub */}
-          <button className="btn btn-social-size bg-black text-white border-black hover:bg-gray-800">
+          <button
+            className="btn btn-social-size bg-black text-white border-black hover:bg-gray-800"
+            onClick={() => socialSignIndHandler("github")}
+          >
             <GithubSvg />
             Login with GitHub
           </button>
 
           {/* Google */}
-          <button className="btn btn-social-size bg-white text-black border-[#e5e5e5] hover:bg-gray-300">
+          <button
+            className="btn btn-social-size bg-white text-black border-[#e5e5e5] hover:bg-gray-300"
+            onClick={() => socialSignIndHandler("google")}
+          >
             <GoogleSvg />
             Login with Google
           </button>

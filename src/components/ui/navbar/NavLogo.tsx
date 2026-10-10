@@ -1,6 +1,5 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { getCurrentDateBn } from "@/lib/utils";
 
 type NavLogoProps = {
@@ -15,14 +14,8 @@ function NavLogo(props: NavLogoProps) {
     <div className={`flex-1 ${className ? className : ""}`} {...rest}>
       <Link href="/" className="btn btn-ghost text-xl py-6 px-2">
         <div className="flex gap-2">
-          <span className="p-4 rounded-lg bg-pr">
-            <Image
-              src="/logo-icon.png"
-              alt="logo of bazar dor. a cart with a green background"
-              width={12}
-              height={12}
-              className="w-full"
-            />
+          <span className="py-1 px-2 md:py-3 md:px-4 rounded-lg bg-pr text-pr-content text-lg md:text-xl">
+            🛒
           </span>
           <p className="flex flex-col text-left">
             <span className="text-base sm:text-lg md:text-2xl font-bold">

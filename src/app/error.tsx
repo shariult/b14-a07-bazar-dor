@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect } from "react";
 
 type ErrorPageProps = {
@@ -13,14 +14,26 @@ function ErrorPage({ error, reset }: ErrorPageProps) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-10">
-      <h2 className="text-4xl mb-4">Something went wrong!</h2>
-      <button
-        onClick={() => reset()}
-        className="btn bg-red-500 hover:bg-red-700 text-gray-50 rounded-lg"
-      >
-        Try again
-      </button>
+    <div className="flex flex-col items-center justify-center container mx-auto p-10 ">
+      <h2 className="text-4xl mb-4 text-red-500">
+        {error.message ?? "কিছু একটা সমস্যা হয়েছে!"}
+      </h2>
+
+      <div className="flex gap-4">
+        <Link
+          href={"/"}
+          className="btn bg-pr hover:bg-pr-hover text-pr-content rounded-lg"
+        >
+          হোমপেজে ফিরে যান
+        </Link>
+
+        <button
+          onClick={() => reset()}
+          className="btn bg-red-500 hover:bg-red-700 text-gray-50 rounded-lg"
+        >
+          আবার চেষ্টা করুন
+        </button>
+      </div>
     </div>
   );
 }

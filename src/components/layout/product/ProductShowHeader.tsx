@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import { Product } from "@/types";
 import Container from "@/components/ui/Container";
-import PriceChangeIndicator from "@/components/ui/PriceChangeIndicator";
+import PriceChangeIndicator from "@/components/ui/product/PriceChangeIndicator";
 import { formatUnit, toBanglaNum } from "@/lib/utils";
 
 type ProductShowHeaderProps = {

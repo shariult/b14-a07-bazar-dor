@@ -1,3 +1,10 @@
+type ActionResult<T> =
+  | {
+      isSuccess: true;
+      data: T;
+    }
+  | { isSuccess: false; error: string };
+
 type Category = {
   id: string;
   slug: string;
@@ -36,4 +43,10 @@ type Product = {
   markets: Market[];
 };
 
-export { type Category, type PriceDirection, type PriceChange, type Product };
+export {
+  type Category,
+  type PriceDirection,
+  type PriceChange,
+  type Product,
+  type ActionResult,
+};

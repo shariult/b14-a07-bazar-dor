@@ -1,11 +1,12 @@
 import React from "react";
+import { notFound } from "next/navigation";
 import Container from "@/components/ui/Container";
 import Breadcrumbs from "@/components/ui/breadcrumbs/Breadcrumbs";
 import ProductShowHeader from "@/components/layout/product/ProductShowHeader";
 import ProductShowSummary from "@/components/layout/product/ProductShowSummary";
 import ProductShowTable from "@/components/layout/product/ProductShowTable";
 import { getProductShow } from "@/lib/productActions";
-import { Product } from "@/types";
+import toast from "react-hot-toast";
 
 type ProductShowProps = {
   params: Promise<{
@@ -16,7 +17,13 @@ type ProductShowProps = {
 async function ProductShow({ params }: ProductShowProps) {
   const { pSlug } = await params;
   const pId = pSlug.split("-")[0];
-  const data = (await getProductShow(pId)) as Product;
+  const result = await getProductShow(pId);
+
+  if ((result.isSuccess && result.data) || !result.isSuccess) {
+    notFound();
+  }
+
+  const { data } = result;
 
   return (
     <>
