@@ -2,10 +2,8 @@ import React, { ComponentPropsWithoutRef, Suspense } from "react";
 import NavLogo from "./NavLogo";
 import MobileMenu from "./MobileMenu";
 import NavUser from "./NavUser";
-import NavLinks from "./NavLinks";
-import NavLinksSk from "./NavLinksSk";
-import { getCurrentUser } from "@/lib/userActions";
-import NavNoUser from "./NavNoUser";
+import NavCategories from "./NavCategories";
+import NavCategoriesSk from "./NavCategoriesSk";
 
 type NavbarProps = {
   className?: string;
@@ -14,8 +12,6 @@ type NavbarProps = {
 
 async function Navbar(props: NavbarProps) {
   const { className, children, ...rest } = props;
-
-  const session = await getCurrentUser();
 
   return (
     <nav
@@ -28,13 +24,13 @@ async function Navbar(props: NavbarProps) {
         </Suspense>
 
         <NavLogo />
-        {!session ? <NavNoUser /> : <NavUser />}
+        <NavUser />
       </div>
 
       <div className="hidden md:block border-t border-gray-100">
         <ul className="container mx-auto flex">
-          <Suspense fallback={<NavLinksSk />}>
-            <NavLinks />
+          <Suspense fallback={<NavCategoriesSk />}>
+            <NavCategories />
           </Suspense>
         </ul>
       </div>

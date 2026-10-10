@@ -1,11 +1,11 @@
 import React, { ComponentPropsWithoutRef } from "react";
 
-type NavLinksSkProps = {
+type NavCategoriesSkProps = {
   className?: string;
   children?: React.ReactNode;
 } & ComponentPropsWithoutRef<"li">;
 
-function NavLinksSk(props: NavLinksSkProps) {
+function NavCategoriesSk(props: NavCategoriesSkProps) {
   const { className, children, ...rest } = props;
 
   const data = [1, 2, 3, 4, 5, 6, 7];
@@ -27,4 +27,4 @@ function NavLinksSk(props: NavLinksSkProps) {
   );
 }
 
-export default NavLinksSk;
+export default NavCategoriesSk;

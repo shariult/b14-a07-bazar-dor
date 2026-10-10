@@ -1,14 +1,13 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import Link from "next/link";
 import { getCategoryIndex } from "@/lib/categoryActions";
-import toast from "react-hot-toast";
+import NavLink from "./NavLink";
 
-type NavLinksProps = {
+type NavCategoriesProps = {
   className?: string;
   children?: React.ReactNode;
 } & ComponentPropsWithoutRef<"li">;
 
-async function NavLinks(props: NavLinksProps) {
+async function NavCategories(props: NavCategoriesProps) {
   const { className, children, ...rest } = props;
   const result = await getCategoryIndex();
 
@@ -29,17 +28,11 @@ async function NavLinks(props: NavLinksProps) {
             className={`${className ? className : ""}`}
             {...rest}
           >
-            <Link
-              href={`/category/${item.slug}`}
-              className="flex gap-2 py-2 px-4 md:justify-center hover:bg-gray-100 md:rounded-lg"
-            >
-              <span>{item.icon}</span>
-              <span>{item.nameBn}</span>
-            </Link>
+            <NavLink href={`/category/${item.slug}`} categoryData={item} />
           </li>
         ))}
     </>
   );
 }
 
-export default NavLinks;
+export default NavCategories;

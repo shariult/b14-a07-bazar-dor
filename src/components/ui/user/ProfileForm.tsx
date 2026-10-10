@@ -1,7 +1,7 @@
 "use client";
 
 import { authClient } from "@/lib/authClient";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import React, { ComponentPropsWithoutRef } from "react";
 import toast from "react-hot-toast";
 
@@ -12,7 +12,6 @@ type ProfileFormProps = {
 
 function ProfileForm(props: ProfileFormProps) {
   const { className, children, ...rest } = props;
-  const router = useRouter();
 
   async function profileUpdateHandler(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -26,9 +25,8 @@ function ProfileForm(props: ProfileFormProps) {
     if (error) {
       toast.error(error.message ?? "Something went wrong!");
     }
-    router.push("/");
-    router.refresh();
     toast.success("Name updated successfully");
+    redirect("/");
   }
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ComponentPropsWithoutRef } from "react";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/authClient";
 
@@ -12,13 +12,11 @@ type ProfileSignOutProps = {
 
 function ProfileSignOut(props: ProfileSignOutProps) {
   const { className, children, ...rest } = props;
-  const router = useRouter();
 
   function signOutHandler() {
     authClient.signOut();
-    router.push("/");
-    router.refresh();
     toast.success("Successfully Signed Out!");
+    redirect("/signin");
   }
 
   return (

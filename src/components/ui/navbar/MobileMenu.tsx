@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import NavLinks from "./NavLinks";
+import NavLinks from "./NavCategories";
 
 type MobileMenuProps = {
   className?: string;

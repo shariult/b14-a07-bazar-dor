@@ -1,13 +1,13 @@
 "use client";
 
 import React, { ComponentPropsWithoutRef } from "react";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import { authClient } from "@/lib/authClient";
-import { useRouter } from "next/navigation";
 import UserDemoImg from "../user/UserDemoImg";
 import Loading from "../Loading";
-import toast from "react-hot-toast";
 
 type NavUserProps = {
   className?: string;
@@ -16,19 +16,37 @@ type NavUserProps = {
 
 function NavUser(props: NavUserProps) {
   const { className, children, ...rest } = props;
-  const { data, error, isPending } = authClient.useSession();
-  const router = useRouter();
+  const { data, error, isPending, isRefetching } = authClient.useSession();
 
   function signOutHandler() {
     authClient.signOut();
-    router.push("/signin");
-    router.refresh();
+
     toast.success("Successfully Signed Out!");
+    redirect("/signin");
+  }
+
+  if (isPending) {
+    return <Loading className="flex gap-2 items-center" />;
+  }
+
+  if (!data && !isPending) {
+    return (
+      <div className={`flex flex-wrap sm:flex-nowrap gap-1 `} {...rest}>
+        <Link href="/signin" className="btn btn-ghost btn-sm md:btn-md">
+          সাইন ইন
+        </Link>
+        <Link
+          href="/signup"
+          className="btn btn-sm md:btn-md bg-pr text-pr-content hover:bg-pr-hover"
+        >
+          সাইন আপ
+        </Link>
+      </div>
+    );
   }
 
   return (
     <>
-      {isPending && <Loading />}
       {!isPending && data && (
         <div className={`flex gap-2 ${className ? className : ""}`} {...rest}>
           <div className="dropdown dropdown-end">

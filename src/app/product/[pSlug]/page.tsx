@@ -19,7 +19,7 @@ async function ProductShow({ params }: ProductShowProps) {
   const pId = pSlug.split("-")[0];
   const result = await getProductShow(pId);
 
-  if ((result.isSuccess && result.data) || !result.isSuccess) {
+  if ((result.isSuccess && !result.data) || !result.isSuccess) {
     notFound();
   }
 

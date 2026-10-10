@@ -1,11 +1,11 @@
 "use client";
 
 import React, { ComponentPropsWithoutRef, useState } from "react";
-import { authClient } from "@/lib/authClient";
-import { GithubSvg, GoogleSvg } from "@/components/SvgIcons";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { GithubSvg, GoogleSvg } from "@/components/SvgIcons";
+import { authClient } from "@/lib/authClient";
 
 type UserFormProps = {
   type: "signin" | "signup";
@@ -15,7 +15,6 @@ type UserFormProps = {
 function UserForm(props: UserFormProps) {
   const { type, className, ...rest } = props;
   const [isPassMatch, setIsPassMatch] = useState<boolean>(true);
-  const router = useRouter();
 
   async function userSubmitHandler(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -35,6 +34,7 @@ function UserForm(props: UserFormProps) {
         name: formData.get("name") as string,
         email: formData.get("email") as string,
         password: formData.get("password") as string,
+        callbackURL: "/",
       });
 
       if (error) {
@@ -42,10 +42,11 @@ function UserForm(props: UserFormProps) {
         return;
       }
       formEl.reset();
-      router.push("/");
-      router.refresh();
+
       toast.success("Sign Up Successful!");
+      redirect("/");
     }
+
     if (type === "signin") {
       const { data, error } = await authClient.signIn.email({
         email: formData.get("email") as string,
@@ -58,24 +59,25 @@ function UserForm(props: UserFormProps) {
         return;
       }
       formEl.reset();
-      router.push("/");
-      router.refresh();
+
       toast.success("Sign In Successful!");
+      redirect("/");
     }
   }
 
   async function socialSignIndHandler(provider: "google" | "github") {
     const { data, error } = await authClient.signIn.social({
       provider,
+      callbackURL: "/",
     });
 
     if (error) {
       toast.error(error.message ?? "Something went wrong!");
       return;
     }
-    router.push("/");
-    router.refresh();
+
     toast.success("Sign Up Successful!");
+    redirect("/");
   }
 
   return (
