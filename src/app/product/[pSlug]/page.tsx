@@ -6,7 +6,6 @@ import ProductShowHeader from "@/components/layout/product/ProductShowHeader";
 import ProductShowSummary from "@/components/layout/product/ProductShowSummary";
 import ProductShowTable from "@/components/layout/product/ProductShowTable";
 import { getProductShow } from "@/lib/productActions";
-import toast from "react-hot-toast";
 
 type ProductShowProps = {
   params: Promise<{

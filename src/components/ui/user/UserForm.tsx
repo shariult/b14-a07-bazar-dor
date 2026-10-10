@@ -6,6 +6,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { GithubSvg, GoogleSvg } from "@/components/SvgIcons";
 import { authClient } from "@/lib/authClient";
+import SignInToast from "./SignInToast";
 
 type UserFormProps = {
   type: "signin" | "signup";
@@ -43,8 +44,8 @@ function UserForm(props: UserFormProps) {
       }
       formEl.reset();
 
-      toast.success("Sign Up Successful!");
-      redirect("/");
+      toast.success("Sign Up Successful! Please Sign In.");
+      redirect("/signin");
     }
 
     if (type === "signin") {
@@ -76,7 +77,7 @@ function UserForm(props: UserFormProps) {
       return;
     }
 
-    toast.success("Sign Up Successful!");
+    toast.success("Sign In Successful!");
     redirect("/");
   }
 
@@ -175,13 +176,35 @@ function UserForm(props: UserFormProps) {
             Login with Google
           </button>
         </div>
+        <br />
+
+        {type === "signup" && (
+          <p>
+            অ্যাকাউন্ট আছে? &nbsp;
+            <Link href={"/signin"} className="text-pr hover:text-pr-hover">
+              সাইন ইন করুন
+            </Link>
+          </p>
+        )}
+
+        {type === "signin" && (
+          <p>
+            অ্যাকাউন্ট নেই? &nbsp;
+            <Link href={"/signup"} className="text-pr hover:text-pr-hover">
+              সাইন আপ করুন
+            </Link>
+          </p>
+        )}
       </div>
+
       <Link
         href="/"
         className="btn btn-link font-normal text-gray-500 hover:text-pr no-underline hover:underline"
       >
         &larr; হোম পেজে ফিরে যান
       </Link>
+
+      <SignInToast />
     </>
   );
 }

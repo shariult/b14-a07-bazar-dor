@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BazarDor (বাজার দর)
 
-## Getting Started
+Compare the prices of products in different Bazars and find the best deals. Sign in with Email, Google, or GitHub to get detailed information.
 
-First, run the development server:
+## Technologies used
+
+- Next.js
+- Tailwind CSS
+- DaisyUI
+- MongoDB
+- Better-Auth
+- React-Hot-Toast
+
+## Features
+
+- Compare prices of products in different bazars.
+- View top products price rising and falling in bazar.
+- Sign in with Email, Google and GitHub.
+- Website is fully responsive and mobile friendly for all screen sizes.
+- Skeleton loading of products for better user experience.
+- Show proper errors messages using React Hot Toast.
+
+## Project Dependencies
+
+- Windows, MacOS, or Linux
+- Node.js
+- PNPM
+- MongoDB
+- Chrome or any other modern browser
+
+## Run Locally
+
+1. Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/shariult/b14-a07-bazar-dor.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cd b14-a07-bazar-dor
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Install dependencies
 
-## Learn More
+```bash
+pnpm i
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Copy "template.env" to ".env". To run in Development mode and set the environment variables in the ".env" file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Run the project in development mode,
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+```
 
-## Deploy on Vercel
+## 📬 Let's Connect & Collaborate!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I am currently open to freelance projects, remote positions, and collaborative opportunities.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[<img src="https://img.shields.io/badge/Website-shariul.com-blue?style=for-the-badge&logo=google-chrome&logoColor=white" />](https://shariul.com) [<img src="https://img.shields.io/badge/LinkedIn-shariul-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />](https://www.linkedin.com/in/shariul/) [<img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" />](https://discord.gg/9q5GRgVS2)
+
+## Screenshots
+
+![screenshot 01](./public/screenshots/01.webp)
+
+![screenshot 02](./public/screenshots/02.webp)
+
+![screenshot 03](./public/screenshots/03.webp)
+
+![screenshot 04](./public/screenshots/04.webp)

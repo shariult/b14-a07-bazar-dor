@@ -32,7 +32,7 @@ function ProductShowSummary(props: ProductShowSummaryProps) {
         className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8  ${className ? className : ""}`}
         {...rest}
       >
-        <div className="flex flex-col gap-1 border border-gray-300 rounded-xl p-8">
+        <div className="flex flex-col gap-1 bg-white border border-gray-300 rounded-xl p-8">
           <p className="text-sm text-gray-500">সর্বনিম্ন দাম</p>
           <p className="flex gap-2 items-end text-green-700">
             <span className="text-3xl font-bold">

@@ -5,7 +5,13 @@ export async function proxy(req: NextRequest) {
   const user = await getCurrentUser();
 
   if (!user) {
-    return NextResponse.redirect(new URL("/signin", req.url));
+    const url = new URL("/signin", req.url);
+    url.searchParams.set("error", "auth_required");
+    url.searchParams.set(
+      "callbackUrl",
+      req.nextUrl.pathname + req.nextUrl.search,
+    );
+    return NextResponse.redirect(url);
   }
 
   return NextResponse.next();
