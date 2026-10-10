@@ -78,7 +78,7 @@ function UserForm(props: UserFormProps) {
     }
 
     toast.loading(`Redirecting to your ${provider.toUpperCase()} account!`);
-    redirect("/");
+    // redirect("/");
   }
 
   return (

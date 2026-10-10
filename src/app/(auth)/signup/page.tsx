@@ -1,7 +1,13 @@
 import React from "react";
+import { redirect } from "next/navigation";
 import UserForm from "@/components/ui/user/UserForm";
+import { getCurrentUser } from "@/lib/userActions";
 
-function SignUpPage() {
+async function SignUpPage() {
+  const data = await getCurrentUser();
+  if (data) {
+    redirect("/");
+  }
   return (
     <div className="max-w-105 mx-auto pt-6 pb-20 flex flex-col justify-center text-center">
       <h3 className="heading-3 font-bold">অ্যাকাউন্ট তৈরি করুন</h3>
