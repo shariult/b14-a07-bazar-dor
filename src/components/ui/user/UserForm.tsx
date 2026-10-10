@@ -77,7 +77,7 @@ function UserForm(props: UserFormProps) {
       return;
     }
 
-    toast.success("Sign In Successful!");
+    toast.loading(`Redirecting to your ${provider.toUpperCase()} account!`);
     redirect("/");
   }
 
