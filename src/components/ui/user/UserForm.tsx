@@ -7,51 +7,68 @@ import { redirect } from "next/navigation";
 import { GithubSvg, GoogleSvg } from "@/components/SvgIcons";
 import { authClient } from "@/lib/authClient";
 import SignInToast from "./SignInToast";
+import { validateInput } from "@/lib/utils";
 
 type UserFormProps = {
   type: "signin" | "signup";
   className?: string;
 } & ComponentPropsWithoutRef<"form">;
 
+type UserFormError = {
+  name: string | null;
+  email: string | null;
+  password: string | null;
+};
+
 function UserForm(props: UserFormProps) {
   const { type, className, ...rest } = props;
-  const [isPassMatch, setIsPassMatch] = useState<boolean>(true);
+  const [formError, setFormError] = useState<UserFormError>();
 
   async function userSubmitHandler(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     const formEl = e.currentTarget;
     const formData = new FormData(formEl);
 
-    if (
-      type === "signup" &&
-      formData.get("password") !== formData.get("password-confirm")
-    ) {
-      setIsPassMatch(false);
-      return;
-    }
+    const nameInput = formData.get("name") as string;
+    const emailInput = formData.get("email") as string;
+    const passwordInput = formData.get("password") as string;
+    const passwordConfirmInput = formData.get("password-confirm") as string;
 
     if (type === "signup") {
-      const { data, error } = await authClient.signUp.email({
-        name: formData.get("name") as string,
-        email: formData.get("email") as string,
-        password: formData.get("password") as string,
-        callbackURL: "/",
-      });
+      const errorObj = {
+        name: !validateInput("string", nameInput) ? "নাম সঠিক নেই!" : null,
+        email: !validateInput("email", emailInput) ? "ইমেইল সঠিক নেই!" : null,
+        password: !validateInput("password", passwordInput)
+          ? "পাসওয়ার্ড ৮ সংখ্যার বেশি হতে হবে!"
+          : null,
+      };
+      if (passwordInput !== passwordConfirmInput) {
+        errorObj.password = "পাসওয়ার্ড মিলে নাই!";
+      }
+      if (errorObj.name || errorObj.email || errorObj.password) {
+        setFormError(errorObj);
+        return;
+      }
 
+      const { data, error } = await authClient.signUp.email({
+        name: nameInput,
+        email: emailInput,
+        password: passwordInput,
+      });
       if (error) {
         toast.error(error.message ?? "Something went wrong!");
         return;
       }
       formEl.reset();
-
+      authClient.signOut();
       toast.success("Sign Up Successful! Please Sign In.");
       redirect("/signin");
     }
 
     if (type === "signin") {
       const { data, error } = await authClient.signIn.email({
-        email: formData.get("email") as string,
-        password: formData.get("password") as string,
+        email: emailInput,
+        password: passwordInput,
         rememberMe: true,
       });
 
@@ -97,8 +114,13 @@ function UserForm(props: UserFormProps) {
                 name="name"
                 className="input w-full"
                 placeholder="যেমন: রহিম উদ্দিন"
-                required
+                // required
               />
+              {formError?.name && (
+                <p className="text-red-500 text-left text-sm">
+                  {formError?.name}
+                </p>
+              )}
             </div>
           )}
 
@@ -109,8 +131,13 @@ function UserForm(props: UserFormProps) {
               name="email"
               className="input w-full"
               placeholder="you@example.com"
-              required
+              // required
             />
+            {formError?.email && (
+              <p className="text-red-500 text-left text-sm">
+                {formError?.email}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-2">
@@ -121,11 +148,11 @@ function UserForm(props: UserFormProps) {
               className="input w-full"
               placeholder="কমপক্ষে ৮ অক্ষর"
               minLength={8}
-              required
+              // required
             />
-            {!isPassMatch && (
+            {formError?.password && (
               <p className="text-red-500 text-left text-sm">
-                পাসোওয়ার্ড মিলে নাই
+                {formError?.password}
               </p>
             )}
           </div>
@@ -139,11 +166,11 @@ function UserForm(props: UserFormProps) {
                 className="input w-full"
                 placeholder="আবার লিখুন"
                 minLength={8}
-                required
+                // required
               />
-              {!isPassMatch && (
+              {formError?.password && (
                 <p className="text-red-500 text-left text-sm">
-                  পাসোওয়ার্ড মিলে নাই
+                  {formError?.password}
                 </p>
               )}
             </div>

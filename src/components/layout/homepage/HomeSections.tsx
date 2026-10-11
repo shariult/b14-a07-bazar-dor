@@ -11,7 +11,7 @@ async function HomeSections() {
   if (result.isSuccess && result.data.length === 0) {
     return (
       <EmptyData
-        className="container mx-auto mb-10"
+        className="max-w-330 container mx-auto mb-10"
         hideBtn={true}
         message="কোন পণ্য পাওয়া যায় নি!"
       />
@@ -21,7 +21,7 @@ async function HomeSections() {
   if (!result.isSuccess) {
     return (
       <EmptyData
-        className="container mx-auto mb-10"
+        className="max-w-330 container mx-auto mb-10"
         hideBtn={true}
         isError={true}
         message="কিছু একটা সমস্যা হয়েছে!"

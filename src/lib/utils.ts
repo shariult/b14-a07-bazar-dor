@@ -34,4 +34,27 @@ const formatUnit = (unit: string) => {
   return units[unit.toLowerCase()] || unit;
 };
 
-export { getCurrentDateBn, delay, toBanglaNum, formatUnit };
+function validateInput(
+  type: "string" | "number" | "email" | "password",
+  data: string | null,
+): boolean {
+  if (type === "string") {
+    return data !== null && data.trim().length > 0;
+  }
+
+  if (type === "number") {
+    return data !== null && data.trim() !== "" && !isNaN(Number(data));
+  }
+
+  if (type === "email") {
+    return data !== null && data.length > 0 && data.includes("@");
+  }
+
+  if (type === "password") {
+    return data !== null && data.length >= 8;
+  }
+
+  return false;
+}
+
+export { getCurrentDateBn, delay, toBanglaNum, formatUnit, validateInput };

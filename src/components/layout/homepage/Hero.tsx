@@ -9,6 +9,7 @@ function Hero() {
   return (
     <Container
       el={"header"}
+      className="px-6 md:px-6"
       boxClassName="grid md:grid-cols-2 my-10 bg-gray-50 rounded-2xl shadow-sm"
     >
       <div className="text-center md:text-left">

@@ -20,7 +20,7 @@ async function CategoryShow({ params }: CategoryShowProps) {
   if (cResult.isSuccess && pResult.isSuccess && pResult.data.length === 0) {
     return (
       <EmptyData
-        className="container mx-auto"
+        className="max-w-330 container mx-auto"
         message="কোন পণ্য পাওয়া যায় নি!"
       />
     );
@@ -31,7 +31,7 @@ async function CategoryShow({ params }: CategoryShowProps) {
   }
 
   return (
-    <div className="flex flex-col gap-4 py-12">
+    <div className="flex flex-col gap-4 py-12 px-6 lg:px-0">
       <CategoryShowHero
         categoryData={cResult.data}
         numOfProducts={pResult.data.length}

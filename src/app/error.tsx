@@ -14,7 +14,7 @@ function ErrorPage({ error, reset }: ErrorPageProps) {
   });
 
   return (
-    <div className="flex flex-col items-center justify-center container mx-auto p-10 ">
+    <div className="max-w-330 container mx-auto flex flex-col items-center justify-center p-10 ">
       <h2 className="text-4xl mb-4 text-red-500">
         {error.message ?? "কিছু একটা সমস্যা হয়েছে!"}
       </h2>

@@ -26,14 +26,14 @@ async function ProductShow({ params }: ProductShowProps) {
 
   return (
     <>
-      <div className="container mx-auto px-6 py-8">
+      <div className="max-w-330 container mx-auto px-6 py-8">
         <Breadcrumbs product={data} />
       </div>
 
       <ProductShowHeader className="mb-8" productData={data} />
 
       <Container
-        className="mb-8"
+        className="mb-8 mx-6 xl:mx-6"
         boxClassName="bg-gray-50 rounded-xl border border-gray-200"
         setYSpace="py-8"
       >

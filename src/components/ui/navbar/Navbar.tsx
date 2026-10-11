@@ -18,7 +18,7 @@ async function Navbar(props: NavbarProps) {
       className={`bg-base-100 border-b border-gray-100 sticky top-0 z-10 ${className ? className : ""}`}
       {...rest}
     >
-      <div className="navbar container mx-auto">
+      <div className="navbar max-w-330 container mx-auto">
         <Suspense>
           <MobileMenu />
         </Suspense>
@@ -28,7 +28,7 @@ async function Navbar(props: NavbarProps) {
       </div>
 
       <div className="hidden md:block border-t border-gray-100">
-        <ul className="container mx-auto flex">
+        <ul className="max-w-330 container mx-auto flex">
           <Suspense fallback={<NavCategoriesSk />}>
             <NavCategories />
           </Suspense>

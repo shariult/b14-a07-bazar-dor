@@ -16,6 +16,7 @@ function ProductShowHeader(props: ProductShowHeaderProps) {
   return (
     <Container
       el={"header"}
+      className="mx-6 xl:mx-6"
       boxClassName={`bg-gray-50 rounded-2xl border border-gray-200 flex flex-col md:flex-row justify-between items-center gap-8 ${className ? className : ""}`}
       setYSpace="py-8"
       {...rest}
