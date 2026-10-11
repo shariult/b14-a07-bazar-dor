@@ -46,7 +46,7 @@ async function HomeSections() {
     .slice(0, 6);
 
   return (
-    <Container setXSpace="px-0">
+    <Container setXSpace="px-0" boxClassName="flex flex-col gap-20">
       <div>
         <h2 className="heading-2 flex gap-2 mb-8">
           <span className="text-red-700">▲</span> আজ দাম বেড়েছে
