@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import CategoryShowHero from "@/components/layout/category/CategoryShowHero";
 import CategoryShowProducts from "@/components/layout/category/CategoryShowProducts";
 import EmptyData from "@/components/ui/EmptyData";
+import Container from "@/components/ui/Container";
 import { getProductsByCategory } from "@/lib/productActions";
 import { getCategoryShow } from "@/lib/categoryActions";
-import Container from "@/components/ui/Container";
 
 type CategoryShowProps = {
   params: Promise<{

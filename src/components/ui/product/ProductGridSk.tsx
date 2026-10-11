@@ -1,16 +1,23 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import ProductCardSk from "./ProductCardSk";
+import Container from "../Container";
 
 type ProductGridSkProps = {
   className?: string;
+  setXSpace?: string;
+  setYSpace?: string;
   children?: React.ReactNode;
 } & ComponentPropsWithoutRef<"div">;
 
 function ProductGridSk(props: ProductGridSkProps) {
-  const { className, children, ...rest } = props;
+  const { setXSpace, setYSpace, className, children, ...rest } = props;
   const dummyArr = [1, 2, 3, 4, 5, 6];
   return (
-    <section className="max-w-330 container mx-auto mb-8">
+    <Container
+      className="mb-8"
+      setXSpace={`${setXSpace ?? "px-0"}`}
+      setYSpace={`${setYSpace ?? "py-20"}`}
+    >
       <div
         className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 ${className ? className : ""}`}
         {...rest}
@@ -19,7 +26,7 @@ function ProductGridSk(props: ProductGridSkProps) {
           return <ProductCardSk key={item} />;
         })}
       </div>
-    </section>
+    </Container>
   );
 }
 

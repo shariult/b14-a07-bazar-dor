@@ -2,7 +2,7 @@ import React from "react";
 import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/product/ProductCard";
 import EmptyData from "@/components/ui/EmptyData";
-import { delay, toBanglaNum } from "@/lib/utils";
+import { toBanglaNum } from "@/lib/utils";
 import { getProductIndex } from "@/lib/productActions";
 
 async function HomeSections() {
