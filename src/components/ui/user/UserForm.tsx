@@ -185,22 +185,22 @@ function UserForm(props: UserFormProps) {
         <div className="divider text-sm text-gray-500">অথবা</div>
 
         <div className="flex justify-between gap-2">
-          {/* GitHub */}
-          <button
-            className="btn btn-social-size bg-black text-white border-black hover:bg-gray-800"
-            onClick={() => socialSignIndHandler("github")}
-          >
-            <GithubSvg />
-            Login with GitHub
-          </button>
-
           {/* Google */}
           <button
-            className="btn btn-social-size bg-white text-black border-[#e5e5e5] hover:bg-gray-300"
+            className="btn btn-social-size bg-white text-black text-xs md:text-sm border-[#e5e5e5] hover:bg-gray-300"
             onClick={() => socialSignIndHandler("google")}
           >
             <GoogleSvg />
-            Login with Google
+            Google দিয়ে চালিয়ে যান
+          </button>
+
+          {/* GitHub */}
+          <button
+            className="btn btn-social-size bg-white text-black text-xs md:text-sm border-[#e5e5e5] hover:bg-gray-300"
+            onClick={() => socialSignIndHandler("github")}
+          >
+            <GithubSvg className="text-black" />
+            GitHub দিয়ে চালিয়ে যান
           </button>
         </div>
         <br />
