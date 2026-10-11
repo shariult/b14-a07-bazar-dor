@@ -9,7 +9,7 @@ async function SignUpPage() {
     redirect("/");
   }
   return (
-    <div className="px-6 xl:px-6">
+    <div className="px-6 xl:px-0">
       <div className="max-w-120 mx-auto pt-6 pb-20 flex flex-col justify-center text-center">
         <h3 className="heading-3 font-bold">অ্যাকাউন্ট তৈরি করুন</h3>
         <p className="mb-6 text-gray-500">

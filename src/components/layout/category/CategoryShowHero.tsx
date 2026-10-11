@@ -14,10 +14,8 @@ function CategoryShowHero(props: CategoryShowHeroProps) {
   const { categoryData, numOfProducts, className, children, ...rest } = props;
 
   return (
-    <Container
-      el={"header"}
-      boxClassName={`py-6 bg-gray-50 rounded-xl border border-gray-200 flex gap-4 ${className ? className : ""}`}
-      setYSpace="py-6"
+    <div
+      className={`p-6 bg-gray-50 rounded-xl border border-gray-200 flex gap-4 ${className ? className : ""}`}
       {...rest}
     >
       <p className="text-5xl">{categoryData.icon}</p>
@@ -27,7 +25,7 @@ function CategoryShowHero(props: CategoryShowHeroProps) {
           {toBanglaNum(numOfProducts)}টি পণ্যের আজকের দাম ও পরিবর্তন
         </p>
       </div>
-    </Container>
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@ import CategoryShowProducts from "@/components/layout/category/CategoryShowProdu
 import EmptyData from "@/components/ui/EmptyData";
 import { getProductsByCategory } from "@/lib/productActions";
 import { getCategoryShow } from "@/lib/categoryActions";
+import Container from "@/components/ui/Container";
 
 type CategoryShowProps = {
   params: Promise<{
@@ -31,14 +32,14 @@ async function CategoryShow({ params }: CategoryShowProps) {
   }
 
   return (
-    <div className="flex flex-col gap-4 py-12 px-6 lg:px-0">
+    <Container boxClassName="flex flex-col gap-4 py-12" setXSpace="px-0">
       <CategoryShowHero
         categoryData={cResult.data}
         numOfProducts={pResult.data.length}
       />
 
       <CategoryShowProducts productData={pResult.data} />
-    </div>
+    </Container>
   );
 }
 

@@ -46,8 +46,8 @@ async function HomeSections() {
     .slice(0, 6);
 
   return (
-    <>
-      <Container>
+    <Container setXSpace="px-0">
+      <div>
         <h2 className="heading-2 flex gap-2 mb-8">
           <span className="text-red-700">▲</span> আজ দাম বেড়েছে
         </h2>
@@ -64,9 +64,9 @@ async function HomeSections() {
               );
             })}
         </div>
-      </Container>
+      </div>
 
-      <Container>
+      <div>
         <h2 className="heading-2 flex gap-2 mb-8">
           <span className="text-green-700">▼</span> আজ দাম কমেছে
         </h2>
@@ -83,9 +83,9 @@ async function HomeSections() {
               );
             })}
         </div>
-      </Container>
+      </div>
 
-      <Container id="সব-পণ্য">
+      <div id="সব-পণ্য">
         <h2 className="heading-2 flex flex-col gap-2 mb-8">
           সব পণ্য
           <span className="block text-base font-normal text-gray-500">
@@ -104,8 +104,8 @@ async function HomeSections() {
             );
           })}
         </div>
-      </Container>
-    </>
+      </div>
+    </Container>
   );
 }
 

@@ -33,7 +33,7 @@ async function ProductShow({ params }: ProductShowProps) {
       <ProductShowHeader className="mb-8" productData={data} />
 
       <Container
-        className="mb-8 mx-6 xl:mx-6"
+        className="mb-8"
         boxClassName="bg-gray-50 rounded-xl border border-gray-200"
         setYSpace="py-8"
       >

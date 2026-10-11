@@ -37,9 +37,8 @@ function CategoryShowProducts(props: CategoryShowProductsProps) {
 
   return (
     <>
-      <Container
-        boxClassName={`flex justify-end bg-gray-50 rounded-xl border border-gray-200 ${className ? className : ""}`}
-        setYSpace="py-4"
+      <div
+        className={`flex justify-end p-4 bg-gray-50 rounded-xl border border-gray-200 ${className ? className : ""}`}
         {...rest}
       >
         <div className="flex gap-2 items-center">
@@ -55,15 +54,15 @@ function CategoryShowProducts(props: CategoryShowProductsProps) {
             <option value="price-desc">দাম: বেশি থেকে কম</option>
           </select>
         </div>
-      </Container>
+      </div>
 
-      <Container setYSpace="py-0" setXSpace="px-0">
+      <div>
         <p className="text-gray-500">
           মোট {toBanglaNum(productData.length)}টি পণ্য দেখানো হচ্ছে
         </p>
-      </Container>
+      </div>
 
-      <Container setYSpace="py-0" setXSpace="px-0">
+      <div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sortedData?.length > 0 &&
             sortedData.map((item) => {
@@ -76,7 +75,7 @@ function CategoryShowProducts(props: CategoryShowProductsProps) {
               );
             })}
         </div>
-      </Container>
+      </div>
     </>
   );
 }
